@@ -1,28 +1,16 @@
 class Contact:
 
-    def __init__(self, firstname, middlename, lastname, nickname):
+    def __init__(self, firstname, middlename, lastname, nickname, title, company, address):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
         self.nickname = nickname
+        self.title = title
+        self.company = company
+        self.address = address
 
-        """        def add_name_info(self, driver):
-        driver.find_element_by_name("firstname").click()
-        driver.find_element_by_name("firstname").clear()
-        driver.find_element_by_name("firstname").send_keys("Ivan")
-        driver.find_element_by_name("middlename").clear()
-        driver.find_element_by_name("middlename").send_keys("Alexey")
-        driver.find_element_by_name("lastname").clear()
-        driver.find_element_by_name("lastname").send_keys("Ivanov")
-        driver.find_element_by_name("nickname").clear()
-        driver.find_element_by_name("nickname").send_keys("Iv")
-            wd.find_element_by_name("title").click()
-        wd.find_element_by_name("title").clear()
-        wd.find_element_by_name("title").send_keys("Photograph")
-        wd.find_element_by_name("company").clear()
-        wd.find_element_by_name("company").send_keys("TAIS")
-        wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys("ul. Lenina")
+
+        """
         wd.find_element_by_name("home").clear()
         wd.find_element_by_name("home").send_keys("28392")
         wd.find_element_by_name("mobile").clear()
@@ -76,17 +64,4 @@ class Contact:
         driver.find_element_by_name("byear").click()
         driver.find_element_by_name("byear").clear()
         driver.find_element_by_name("byear").send_keys("1990")
-
-
-
-    def logout(self, driver):
-        driver.find_element_by_link_text("Logout").click()
-
-    def login(self, driver):
-        driver.find_element_by_name("user").click()
-        driver.find_element_by_name("user").clear()
-        driver.find_element_by_name("user").send_keys("admin")
-        driver.find_element_by_name("pass").clear()
-        driver.find_element_by_name("pass").send_keys("secret")
-        driver.find_element_by_xpath("//input[@value='Login']").click()
-        driver.find_element_by_link_text("add new").click()"""
+"""
