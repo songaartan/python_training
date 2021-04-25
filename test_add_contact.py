@@ -9,7 +9,7 @@ class TestAddContact(unittest.TestCase):
     def setUp(self):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
-        self.base_url = "https://www.google.com/"
+        self.base_url = "http://localhost/addressbook/"
 
     def test_add_contact(self):
         wd = self.wd
@@ -17,7 +17,7 @@ class TestAddContact(unittest.TestCase):
         self.login(wd)
         self.add_new_contact(wd, Contact(firstname="Ivan", middlename="Alexey", lastname="Ivanov",
                                          nickname="IV", title="TITLE", company="TAIS", address="ul. Lenina",
-                                         home="28392", mobile="8944", work="98423", fax="98428", email="iv@mail.ru",
+                                         homephone="28392", mobilephone="8944", workphone="98423", fax="98428", email="iv@mail.ru",
                                          email2="iv@gmail.ru", email3="iv@yandex.ru", homepage="iv.ru",
                                          address2="ul.mira", phone2="3453443", notes="xxx",
                                          bday="14", bmonth="April", byear="1990",
@@ -25,7 +25,7 @@ class TestAddContact(unittest.TestCase):
         self.logout(wd)
 
     def open_home_page(self, wd):
-        wd.get("http://localhost/addressbook/")
+        wd.get(self.base_url)
 
     def login(self, wd):
         wd.find_element_by_name("user").click()
@@ -57,11 +57,11 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("address").send_keys(contact.address)
         # add phones
         wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(contact.home)
+        wd.find_element_by_name("home").send_keys(contact.homephone)
         wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys(contact.mobile)
+        wd.find_element_by_name("mobile").send_keys(contact.mobilephone)
         wd.find_element_by_name("work").clear()
-        wd.find_element_by_name("work").send_keys(contact.work)
+        wd.find_element_by_name("work").send_keys(contact.workphone)
         wd.find_element_by_name("fax").clear()
         wd.find_element_by_name("fax").send_keys(contact.fax)
         # add email
