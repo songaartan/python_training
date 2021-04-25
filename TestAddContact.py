@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
 import unittest
 
 from contact import Contact
@@ -13,8 +11,6 @@ class TestAddContact(unittest.TestCase):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
         self.base_url = "https://www.google.com/"
-        #self.verificationErrors = []
-        #self.accept_next_alert = True
 
     def test_add_contact(self):
         wd = self.wd
@@ -24,7 +20,9 @@ class TestAddContact(unittest.TestCase):
                                          nickname="IV", title="TITLE", company="TAIS", address="ul. Lenina",
                                          home="28392", mobile="8944", work="98423", fax="98428", email="iv@mail.ru",
                                          email2="iv@gmail.ru", email3="iv@yandex.ru", homepage="iv.ru",
-                                         address2="ul.mira", phone2="3453443", notes="xxx"))
+                                         address2="ul.mira", phone2="3453443", notes="xxx",
+                                         bday="14", bmonth="April", byear="1990",
+                                         aday="22", amonth="March", ayear="2020"))
         self.logout(wd)
 
     def open_home_page(self, wd):
@@ -78,25 +76,25 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("homepage").send_keys(contact.homepage)
         #add birthday
         wd.find_element_by_name("bday").click()
-        Select(wd.find_element_by_name("bday")).select_by_visible_text("14")
+        Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.bday)
         wd.find_element_by_xpath("//option[@value='14']").click()
         wd.find_element_by_name("bmonth").click()
-        Select(wd.find_element_by_name("bmonth")).select_by_visible_text("April")
+        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.bmonth)
         wd.find_element_by_xpath("//option[@value='April']").click()
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
-        wd.find_element_by_name("byear").send_keys("1990")
-        wd.find_element_by_name("aday").click()
+        wd.find_element_by_name("byear").send_keys(contact.byear)
         #add anniversary date
-        Select(wd.find_element_by_name("aday")).select_by_visible_text("17")
+        wd.find_element_by_name("aday").click()
+        Select(wd.find_element_by_name("aday")).select_by_visible_text(contact.aday)
         wd.find_element_by_xpath("(//option[@value='17'])[2]").click()
         wd.find_element_by_name("theform").click()
         wd.find_element_by_name("amonth").click()
-        Select(wd.find_element_by_name("amonth")).select_by_visible_text("March")
+        Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
         wd.find_element_by_xpath("(//option[@value='March'])[2]").click()
         wd.find_element_by_name("ayear").click()
         wd.find_element_by_name("ayear").clear()
-        wd.find_element_by_name("ayear").send_keys("2019")
+        wd.find_element_by_name("ayear").send_keys(contact.ayear)
         #add secondary info
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
