@@ -1,7 +1,7 @@
 from model.contact import Contact
 
 
-def test_add_contact(app):
+def test_modify_contact(app):
     app.session.login(username="admin", password="secret")
     app.contact.modify(Contact(firstname="Alexandr", middlename="Alexey", lastname="Sozinov",
                                 nickname="Alex", title="NONAME", company="TAIS", address="ul. Lenina",
