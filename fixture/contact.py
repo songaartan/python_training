@@ -9,6 +9,10 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
 
+    def open_home_page(self):
+        wd = self.app.wd
+        wd.get("http://localhost/addressbook/")
+
     def add_new(self, contact):
         wd = self.app.wd
         self.open_new_contact_page()
@@ -80,6 +84,7 @@ class ContactHelper:
 
     def delete_first_contact(self):
         wd = self.app.wd
+        self.open_home_page()
         # select first group
         wd.find_element_by_name("selected[]").click()
         # submit deletion
@@ -88,7 +93,8 @@ class ContactHelper:
 
     def modify(self, contact):
         wd = self.app.wd
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        self.open_home_page()
+        self.select_first_contact()
         # add name info
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(contact.firstname)
@@ -148,3 +154,7 @@ class ContactHelper:
         wd.find_element_by_name("update").click()
         # return to home page
         self.return_to_home_page()
+
+    def select_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//img[@alt='Edit']").click()
