@@ -66,4 +66,3 @@ class GroupHelper:
         return len(wd.find_elements_by_name("selected[]"))
 
 
-
