@@ -11,7 +11,8 @@ class ContactHelper:
 
     def open_home_page(self):
         wd = self.app.wd
-        wd.get("http://localhost/addressbook/")
+        if not (wd.current_url.endswith("addressbook/") and len(wd.find_elements_by_name("Last name")) > 0):
+            wd.get("http://localhost/addressbook/")
 
     def add_new(self, contact):
         wd = self.app.wd
