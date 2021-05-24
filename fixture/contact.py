@@ -171,9 +171,10 @@ class ContactHelper:
         contacts = []
         for element in wd.find_elements_by_name("entry"):
             id = element.find_element_by_name("selected[]").get_attribute("value")
-            title = element.find_element_by_name("selected[]").get_attribute("title")
-            name = title[8:-1]
-            firstname = name[0:name.find(" ")]
-            lastname = name[name.find(" ")+1:len(name)]
-            contacts.append(Contact(id=id, firstname=firstname, lastname=lastname))
+            person = []
+            for cells in element.find_elements_by_tag_name("td"):
+                person.append(cells.text)
+            lastname = person[1]
+            firstname = person[2]
+            contacts.append(Contact(id=id, lastname=lastname, firstname=firstname))
         return contacts
