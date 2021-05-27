@@ -191,17 +191,14 @@ class ContactHelper:
             wd = self.app.wd
             self.open_home_page()
             self.contact_cache = []
-            for element in wd.find_elements_by_name("entry"):
-                id = element.find_element_by_name("selected[]").get_attribute("value")
-                person = []
-                for cells in element.find_elements_by_tag_name("td"):
-                    person.append(cells.text)
-                lastname = person[1]
-                firstname = person[2]
-                all_phones = person[5].splitlines()
+            for row in wd.find_elements_by_name("entry"):
+                cells = row.find_elements_by_tag_name("td")
+                firstname = cells[1].text
+                lastname = cells[2].text
+                id = cells[0].find_element_by_tag_name("input").get_attribute("value")
+                all_phones = cells[5].text
                 self.contact_cache.append(Contact(id=id, lastname=lastname, firstname=firstname,
-                                                  homephone=all_phones[0], mobilephone=all_phones[1],
-                                                  workphone=all_phones[2], secondaryphone=all_phones[3]))
+                                                  all_phones_from_home_page=all_phones))
         return list(self.contact_cache)
 
     #contact_from_home_page = app.contact.get_contact_list()[0]
