@@ -7,13 +7,13 @@ def test_modify_contact(app):
                                 nickname="IV", title="", company="TAIS", address="",
                                 homephone="28392", mobilephone="", workphone="98423", fax="",
                                 email="iv@mail.ru", email2="", email3="", homepage="iv.ru",
-                                address2="ul.mira", phone2="", notes="xxx", bday="10", bmonth="April", byear="1990",
+                                address2="ul.mira", secondaryphone="", notes="xxx", bday="10", bmonth="April", byear="1990",
                                 aday="22", amonth="March", ayear="2020"))
     contact = Contact(firstname="Alexandr", middlename="Alexey", lastname="Sozinov",
                                 nickname="Alex", title="NONAME", company="TAIS", address="ul. Lenina",
                                 homephone="28392", mobilephone="8944", workphone="98423", fax="98428",
                                 email="iv@mail.ru", email2="iv@gmail.ru", email3="iv@yandex.ru", homepage="iv.ru",
-                                address2="ul.mira", phone2="1111111", notes="no notes",
+                                address2="ul.mira", secondaryphone="1111111", notes="no notes",
                                 bday="22", bmonth="April", byear="1998",
                                 aday="22", amonth="May", ayear="2018")
     old_contacts = app.contact.get_contact_list()
