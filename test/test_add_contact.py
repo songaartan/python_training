@@ -12,7 +12,7 @@ def random_date(minday, maxday):
     return str(random.randrange(minday, maxday))
 
 def random_month():
-    monthes = ["January", "February", "March", "April", "May", "June", "Jule", "August", "September", "October", "November", "December"]
+    monthes = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     return random.choice(monthes)
 
 def random_year(minyear, maxyear):
