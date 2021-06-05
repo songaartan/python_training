@@ -3,6 +3,7 @@ from model.contact import Contact
 import pytest
 import random
 import string
+import re
 
 def random_string(prefix, maxlen):
     symbols = string.ascii_letters + string.digits + " "*10
@@ -12,7 +13,8 @@ def random_date(minday, maxday):
     return str(random.randrange(minday, maxday))
 
 def random_month():
-    monthes = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    monthes = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+               "November", "December"]
     return random.choice(monthes)
 
 def random_year(minyear, maxyear):
@@ -24,16 +26,17 @@ def random_email(prefix, maxlen):
            "@" + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))]) + ".ru"
 
 
-testdata = [Contact(firstname=random_string("firstname", 5), middlename=random_string("middlename", 10), lastname=random_string("lastname", 10),
-                                nickname=random_string("nickname", 10), title=random_string("title", 20),
-                                company=random_string("company", 10), address=random_string("address", 10),
-                                homephone=random_string("homephone", 10), mobilephone=random_string("mobilephone", 10),
-                                workphone=random_string("workphone", 10), fax=random_string("fax", 10),
-                                email=random_email("email", 10), email2=random_email("email2", 10),
-                                email3=random_email("email3", 10), homepage=random_string("homepage", 10),
-                                address2=random_string("address2", 10), secondaryphone=random_string("secondaryphone", 10), notes=random_string("notes", 40),
-                                bday=random_date(1, 30), bmonth=random_month(), byear=random_year(1900, 2021),
-                                aday=random_date(1, 30), amonth=random_month(), ayear=random_year(1900, 2021))
+testdata = [Contact(firstname=random_string("firstname", 5), middlename=random_string("middlename", 10),
+                    lastname=random_string("lastname", 10), nickname=random_string("nickname", 10),
+                    title=random_string("title", 20), company=random_string("company", 10),
+                    address=random_string("address", 10), homephone=random_string("homephone", 10),
+                    mobilephone=random_string("mobilephone", 10), workphone=random_string("workphone", 10),
+                    fax=random_string("fax", 10), email=random_email("email", 10), email2=random_email("email2", 10),
+                    email3=random_email("email3", 10), homepage=random_string("homepage", 10),
+                    address2=random_string("address2", 10), secondaryphone=random_string("secondaryphone", 10),
+                    notes=random_string("notes", 40), bday=random_date(1, 30), bmonth=random_month(),
+                    byear=random_year(1900, 2021), aday=random_date(1, 30), amonth=random_month(),
+                    ayear=random_year(1900, 2021))
             for i in range(5)]
 
 
