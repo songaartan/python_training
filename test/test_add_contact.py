@@ -25,9 +25,13 @@ def random_email(prefix, maxlen):
     return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))]) + \
            "@" + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))]) + ".ru"
 
+def random_name(prefix, maxlen):
+    symbols = string.ascii_letters + string.digits + " "*10
+    prefix = prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
+    return prefix.strip()
 
-testdata = [Contact(firstname=random_string("firstname", 5), middlename=random_string("middlename", 10),
-                    lastname=random_string("lastname", 10), nickname=random_string("nickname", 10),
+testdata = [Contact(firstname=random_name("firstname", 5), middlename=random_name("middlename", 10),
+                    lastname=random_name("lastname", 10), nickname=random_name("nickname", 10),
                     title=random_string("title", 20), company=random_string("company", 10),
                     address=random_string("address", 10), homephone=random_string("homephone", 10),
                     mobilephone=random_string("mobilephone", 10), workphone=random_string("workphone", 10),
