@@ -2,6 +2,7 @@ from selenium.webdriver.support.ui import Select
 from model.contact import Contact
 import re
 
+
 class ContactHelper:
     def __init__(self, app):
         self.app = app
@@ -13,7 +14,7 @@ class ContactHelper:
     def open_home_page(self):
         wd = self.app.wd
         if not (wd.current_url.endswith("addressbook/") and len(wd.find_elements_by_name("Last name")) > 0):
-            wd.get("http://localhost/addressbook/")
+            wd.get(self.app.base_url)
 
     def add_new(self, contact):
         wd = self.app.wd
